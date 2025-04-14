@@ -13,7 +13,7 @@ This project is a mobile app for recommending movies & shows. I will be using Re
 - Fonts  
 - Types & Interfaces with TypeScript  
 - Responsive Design  
-- TailWindCSS  
+- NativeWind
 - Backend with appwrite  
 - Working with TMDb API
 
@@ -21,7 +21,8 @@ This project is a mobile app for recommending movies & shows. I will be using Re
 
 - Appwrite - https://appwrite.io/  
 - Expo - https://expo.dev/
-- TMDb API - https://developer.themoviedb.org/docs/getting-started
+- TMDb API - https://developer.themoviedb.org/docs/getting-started  
+- NativeWind - https://www.nativewind.dev/  
 
 ## DEPLOYMENT
 
