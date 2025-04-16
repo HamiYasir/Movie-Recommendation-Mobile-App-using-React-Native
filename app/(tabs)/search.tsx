@@ -9,6 +9,7 @@ import {fetchMovies} from "@/services/api";
 import MovieCard from "@/components/movieCard";
 
 import SearchBar from "@/components/searchBar";
+import {updateSearchCount} from "@/services/appwrite";
 
 const Search = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -24,16 +25,20 @@ const Search = () => {
     }), false)
     // Here, a second argument false is passed because we don't want to autoFetch movies
 
+    // Defining a debounce so that when a movie is searched for, we don't search every movie for each letter in the movie name
+    // The debounce will make it so that movie results are only searched after 500 ms are passed
     useEffect(() => {
-        const func = async () => {
+        updateSearchCount(searchQuery, movies[0]);
+
+        const timeoutId = setTimeout(async() => {
             if(searchQuery.trim()){
                 await loadMovies();
             }else{
                 reset()
             }
-        }
+        }, 500);
 
-        func();
+        return () => clearTimeout(timeoutId);
     }, [searchQuery]);
 
     return (
@@ -86,6 +91,16 @@ const Search = () => {
                             </Text>
                         )}
                     </>
+                }
+                // ListEmptyComponent what renders when nothing is returned by the list
+                ListEmptyComponent={
+                    !loading && !error ? (
+                        <View className="mt-10 px-5">
+                            <Text className="text-center text-gray-500">
+                                {searchQuery.trim() ? 'No movies found' : 'Search for a movie'}
+                            </Text>
+                        </View>
+                    ) : null
                 }
             />
         </View>

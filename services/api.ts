@@ -40,11 +40,7 @@ export const fetchMovies = async ({
 //     method: 'GET',
 //     headers: {
 //         accept: 'application/json',
-<<<<<<< HEAD
 //         Authorization: 'Bearer process.env.EXPO_PUBLIC_MOVIE_API_KEY'
-=======
-//         Authorization: 'Bearer 
->>>>>>> 7c50d826466ec755df6a44383fbd5fb41798affd
 //     }
 // };
 //
